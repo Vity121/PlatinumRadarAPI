@@ -1,10 +1,9 @@
-package com.daw.platinumradar.DTO;
+package com.daw.platinumradar.dto;
 
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
