@@ -1,4 +1,4 @@
-package com.daw.platinumradar.Repository;
+package com.daw.platinumradar.repository;
 
 import com.daw.platinumradar.model.Videojuego;
 import org.springframework.data.jpa.repository.JpaRepository;
