@@ -2,6 +2,7 @@ package com.daw.platinumradar.DTO;
 
 
 import jakarta.validation.constraints.*;
+import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
