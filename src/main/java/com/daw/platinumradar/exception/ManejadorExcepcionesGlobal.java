@@ -1,6 +1,6 @@
 package com.daw.platinumradar.exception;
 
-import com.daw.platinumradar.DTO.ErrorResponse;
+import com.daw.platinumradar.dto.ErrorResponse;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestControllerAdvice
+@RestControllerAdvice(basePackages = "com.daw.platinumradar.controller")
 public class ManejadorExcepcionesGlobal {
 
     // 1. Captura de excepciones de validación de los DTOs (@Valid) - HTTP 400

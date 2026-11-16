@@ -1,4 +1,4 @@
-package com.daw.platinumradar.DTO;
+package com.daw.platinumradar.dto;
 
 import lombok.Data;
 import java.time.LocalDateTime;

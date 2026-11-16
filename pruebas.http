@@ -1,0 +1,82 @@
+### 1. POST - Crear un nuevo videojuego (201 Created)
+POST http://localhost:8080/api/videojuegos
+Content-Type: application/json
+
+{
+  "titulo": "Elden Ring",
+  "steamAppId": "1245620",
+  "estado": "Jugando",
+  "horasJugadas": 45.5,
+  "porcentajeHistoria": 60.0,
+  "precioObjetivo": 0.0,
+  "ultimaPartida": "2024-05-10",
+  "emailUsuario": "alumno@daw.com",
+  "mayorEdad": true,
+  "alertaOfertaActiva": false,
+  "logrosDesbloqueados": ["First Blood", "Godrick Defeated"]
+}
+
+### 2. POST - Error de Validación 400 (Horas negativas, título corto, sin mayoría de edad)
+POST http://localhost:8080/api/videojuegos
+Content-Type: application/json
+
+{
+  "titulo": "A",
+  "steamAppId": "abc",
+  "estado": "Jugando",
+  "horasJugadas": -10.0,
+  "porcentajeHistoria": 150.0,
+  "precioObjetivo": 0.0,
+  "ultimaPartida": "2050-01-01",
+  "emailUsuario": "correo-invalido",
+  "mayorEdad": false,
+  "alertaOfertaActiva": false
+}
+
+### 3. GET - Obtener todos los juegos (200 OK)
+GET http://localhost:8080/api/videojuegos
+
+### 4. GET - Obtener un juego específico (200 OK)
+# Al final hay que pegar el uuid generado por el primer post
+GET http://localhost:8080/api/videojuegos/9e8b56ec-c685-4a3e-b51b-92c1a4410c5a
+
+### 5. GET - Obtener Mashup de datos locales y Steam (200 OK)
+# Si lo ejecutas dos veces seguidas, verás cómo la segunda es más rápida gracias a la Caché RAM
+GET http://localhost:8080/api/videojuegos/9e8b56ec-c685-4a3e-b51b-92c1a4410c5a/steam
+
+### 6. GET - Error 404 (Recurso no encontrado)
+GET http://localhost:8080/api/videojuegos/uuid-inventado-1234
+
+### 7. PATCH - Actualización parcial (200 OK)
+# Al final hay que pegar el uuid generado por el primer post
+PATCH http://localhost:8080/api/videojuegos/9e8b56ec-c685-4a3e-b51b-92c1a4410c5a
+Content-Type: application/json
+
+{
+  "horasJugadas": 80.0,
+  "porcentajeHistoria": 100.0,
+  "estado": "Completado"
+}
+
+### 8. PUT - Reemplazo completo (200 OK)
+# Al final hay que pegar el uuid generado por el primer post
+PUT http://localhost:8080/api/videojuegos/9e8b56ec-c685-4a3e-b51b-92c1a4410c5a
+Content-Type: application/json
+
+{
+  "titulo": "Elden Ring: Edición Definitiva",
+  "steamAppId": "1245620",
+  "estado": "Completado",
+  "horasJugadas": 150.0,
+  "porcentajeHistoria": 100.0,
+  "precioObjetivo": 15.0,
+  "ultimaPartida": "2026-11-16",
+  "emailUsuario": "alumno@daw.com",
+  "mayorEdad": true,
+  "alertaOfertaActiva": true,
+  "logrosDesbloqueados": ["First Blood", "Godrick Defeated", "Elden Lord"]
+}
+
+### 9. DELETE - Borrar juego (204 No Content)
+# Al final hay que pegar el uuid generado por el primer post
+DELETE http://localhost:8080/api/videojuegos/9e8b56ec-c685-4a3e-b51b-92c1a4410c5a
